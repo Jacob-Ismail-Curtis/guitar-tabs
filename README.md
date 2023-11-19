@@ -1,8 +1,8 @@
-# React + Vite
+# Guitar Tabs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A website built with ReactJS and TailwindCSS to parse ultimate guitar tabs and allow you to play along to your favourite songs.
 
-Currently, two official plugins are available:
+## Running the website
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Navigate to project directory and run node cors/cors.cjs to start cors proxy server
+- Then start react app with npm run dev
