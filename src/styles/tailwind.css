@@ -1,3 +1,17 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+.lyrics-container.scrolling {
+    animation: scrollLyrics 60s linear infinite;
+  }
+  
+  @keyframes scrollLyrics {
+    0% {
+      transform: translateX(100%); /* Start off-screen to the right */
+    }
+    100% {
+      transform: translateX(-200%); /* End off-screen to the left */
+    }
+  }
+  
