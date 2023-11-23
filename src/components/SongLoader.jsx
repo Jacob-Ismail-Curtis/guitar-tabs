@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import URLInput from './URLInput';
 import SongDisplay from './SongDisplay';
-import { formatChords, findInObject } from '../utils/SongParser';
+import HorizontalScroll from './HorizontalScroll';
+import { formatChords, findInObject, formatLinesForScroll} from '../utils/SongParser';
 
 const SongLoader = () => {
   const [uri, setUri] = useState('');
   const [songData, setSongData] = useState('');
+  const [songInformation, setSongInformation] = useState("");
+  const [songDataForScroll, setSongDataForScroll] = useState([]);
   const [artist, setArtist] = useState('');
   const [song, setSong] = useState('');
   const [loading, setLoading] = useState(false);
@@ -36,6 +39,12 @@ const SongLoader = () => {
         setArtist(parsedArtistName);
         setSong(parsedSongName);
         setSongData(formatChords(parsedChords));
+  
+        setSongInformation(formatLinesForScroll(parsedChords).songInformation);
+        setSongDataForScroll(formatLinesForScroll(parsedChords).songLines);
+        console.log(parsedChords);
+        console.log(songDataForScroll);
+    
       })
       .catch(error => {
         console.error('Fetch error:', error);
@@ -49,7 +58,8 @@ const SongLoader = () => {
   return (
     <div className="song-loader-container">
       <URLInput uri={uri} setUri={setUri} handleLoadSong={handleLoadSong} loading={loading} />
-      <SongDisplay songData={songData} song={song} artist={artist} />
+      <HorizontalScroll lyrics={songDataForScroll} />
+      {/* <SongDisplay songData={songData} song={song} artist={artist} /> */}
     </div>
   );
 };
